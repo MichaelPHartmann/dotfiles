@@ -1,0 +1,150 @@
+# Shortcuts for my Linux Terminal
+
+# Search directory
+dgrep () {
+grep -nrs $1 *
+}
+
+# Shows most sorted list of branches with last commit
+alias branches='git for-each-ref --sort=-committerdate refs/heads/'
+
+alias startServer='python3 -m http.server 8000'
+
+# Screengrab a selection and save to Documents
+alias scrotsel="scrot -s ~/Documents/"
+
+# Open the default router page in chrome
+alias splashme='chrome 192.168.1.1'
+splash-me () {
+chrome 192.168.1.1;
+chrome 127.1.1.1;
+chrome 1.1.1.1;
+chrome http://localhost
+}
+
+# Manage monitors
+alias monitors='arandr'
+
+# Become European
+meEU () {
+	echo "Changing timezone to Berlin..."
+	timedatectl set-timezone Europe/Berlin
+	echo "Setting PIA VPN to use Berlin servers..."
+	piactl set region de-berlin
+	echo "Connecting to VPN..."
+	piactl connect
+}
+
+undoEU () {
+	echo "Changing timezone to Canada Pacific..."
+	timedatectl set-timezone Canada/Pacific
+	echo "Setting PIA VPN to auto..."
+	piactl set region auto
+	echo "Disconnecting from VPN..."
+	piactl disconnect
+}
+
+#Update Chrome (brutal)
+updateChrome() {
+	sudo apt-get update
+	sudo apt-get --only-upgrade install google-chrome-stable
+}
+
+# Quick access for Projects
+alias m2hb='cd Documents/Clones-M2/m2hb'
+alias pgai='cd Documents/Clones-M2/pgai-v2'
+alias webapp='cd Documents/Clones-M2/web_app'
+
+# -------------
+# CD Made Easy
+# -------------
+alias cd2='cd ../../'
+alias cd3='cd ../../../'
+alias cd4='cd ../../../../'
+alias cd5='cd ../../../../../'
+
+# ----------
+# WEATHER
+# ----------
+function wttr {
+'curl wttr.in/'
+}
+
+# -------------------
+# Networking Things
+# -------------------
+alias myip='curl ip.appspot.com'                    # myip:         Public facing IP Address
+alias netCons='lsof -i'                             # netCons:      Show all open TCP/IP sockets
+alias flushDNS='dscacheutil -flushcache'            # flushDNS:     Flush out the DNS Cache
+alias lsock='sudo /usr/sbin/lsof -i -P'             # lsock:        Display open sockets
+alias lsockU='sudo /usr/sbin/lsof -nP | grep UDP'   # lsockU:       Display only open UDP sockets
+alias lsockT='sudo /usr/sbin/lsof -nP | grep TCP'   # lsockT:       Display only open TCP sockets
+alias ipInfo0='ipconfig getpacket en0'              # ipInfo0:      Get info on connections for en0
+alias ipInfo1='ipconfig getpacket en1'              # ipInfo1:      Get info on connections for en1
+alias openPorts='sudo lsof -i | grep LISTEN'        # openPorts:    All listening connections
+alias showBlocked='sudo ipfw list'                  # showBlocked:  All ipfw rules inc/ blocked IPs
+
+# -------------------
+# Making & Sourcing
+# -------------------
+alias vim='nvim'
+alias src='source .bashrc'
+alias vsc='nvim .bashsc'
+alias vrc='nvim .bashrc'
+alias vtk='nvim .bashtk'
+alias op='xdg-open'
+alias opc='xdg-open .'
+alias chrome='google-chrome'
+alias py='python3'
+
+# Notes
+note () {
+EXT='txt'
+if [ $# -eq 2 ]
+	then
+		EXT=$2
+fi
+nvim ~/Documents/notes/$1.$EXT
+}
+
+transfer-notes () {
+NEWDATE=$(date +%d-%b-%y);
+NEWFILE=~/Documents/Obsidian/$NEWDATE-note-transfer.md;
+for FILE in ~/Documents/notes/*;
+	do
+		touch $NEWFILE;
+		echo $FILE;
+		echo \### $FILE >> $NEWFILE;
+		cat $FILE >> $NEWFILE;
+	done;
+rm -rf ~Documents/notes/*;
+}
+
+# Start Handling
+handling () {
+echo 'switching to 2';
+xdotool key super+2;
+sleep 5s;
+xdotool key Control_L+ISO_Left_Tab;
+sleep $((RANDOM % 200))s;
+echo 'switching to 1';
+xdotool key super+1;
+sleep $((RANDOM % 200))s;
+handling
+}
+
+# Remind Aliases and Functions
+
+alias remindopen='vim ~/.config/remind/reminders.rem'
+alias remindcal='remind -c+5 ~/.config/remind/reminders.rem'
+alias remindme='remind -n ~/.config/remind/reminders.rem | sort'
+alias remindweek='remind -c+1 ~/.config/remind/reminders.rem'
+alias remindday='remind -g ~/.config/remind/reminders.rem'
+
+remindnew () {
+echo $1 >> ~/.config/remind/reminders.rem
+}
+
+# Vim-Like Key Bindings
+alias :wq='exit'
+alias :w='exit'
