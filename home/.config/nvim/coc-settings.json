@@ -1,0 +1,9 @@
+{
+  "languageserver": {
+  },
+  "markdownlint.config": {
+    "ul-indent": {
+      "indent": 4
+    }
+  }
+}

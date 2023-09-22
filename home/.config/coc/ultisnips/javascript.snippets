@@ -1,0 +1,95 @@
+snippet jsdoc-more "JS Doc Template" b
+/**
+ * @description $1
+ * @param $2
+ * @param $3
+ * @return $4
+ */
+endsnippet
+
+snippet jsdoc-basic "JS Doc Basic Template" b
+/**
+ * @description $1
+ * @return $2
+ */
+endsnippet
+
+snippet pgai_test "PGAI Test BoilerPlate" b
+/*
+	{}
+*/
+
+import Test from '../classes/class.test';
+const test = new Test();
+
+/* global psl, pg */
+
+test.run = function () {
+	const result = {};
+	// Start test here
+	$1
+	result.params = {};
+	result.hash = \`\${result.pass || result.code}!\${null}\`;
+	psl.save(result);
+};
+
+test.register();
+endsnippet
+
+snippet atq "PGHB Traffic Cop Queue" b
+// PubGuru Traffic Cop Queue
+window.pg = window.pg || {};
+pg.atq = pg.atq || [];
+pg.atg.push(function () {
+	// Your ad-serving code here
+	$1
+});
+endsnippet
+
+snippet psq "Publisher Split Queue" b
+// PubGuru Split Queue
+window.pg = window.pg || {};
+pg.psn = pg.psn || $1; // Competitor Name
+pg.psp = pg.psp || 0.5; // Split Percent
+pg.psq = pg.psq || []; // Split Queue
+pg.psq.push(function () {
+	// Competitor's ad-serving code here
+	$2
+})
+endsnippet
+
+snippet performance-test "Performance testing boilerplate" b
+// Test One
+var startTimeOne = performance.now()
+for (let i = 0; i < 1000; i++) {
+	// Code to test goes here
+}
+var endTimeOne = performance.now()
+
+// Test Two
+var startTimeTwo = performance.now()
+for (let i = 0; i < 1000; i++) {
+	// Code to test goes here
+}
+var endTimeTwo = performance.now()
+
+console.log(`Test One ---> ${endTimeOne - startTimeOne} milliseconds`);
+console.log(`Test Two ---> ${endTimeTwo - startTimeTwo} milliseconds`);
+endsnippet
+
+snippet setAttributes "Sets attributes from an object" b
+function setAttributes (element, attributes) {
+	for (const key in attributes) {
+		element.setAttribute(key, attributes[key]);
+	}
+	return element;
+}
+endsnippet
+
+snippet reportBrokenPID "The standard method to report broken PIDs in bid adapters" b
+window.pg.auction.wrappers['prebid'].reportBrokenPid(bid, {$1});
+endsnippet
+
+snippet debug-custom "Custom Debug Statement" b
+console.log('%c| DEBUG |\n', 'color:orange;font-size:20px;font-weight:bold;', $1);
+endsnippet

@@ -1,0 +1,55 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet params-bidder "Ad bidder params for DB Admin" b
+{
+	"params": {
+		"$1": {
+			"available_to_ad_rep": true,
+			"default": "",
+			"required": false,
+			"type": "string"
+		},
+	}
+}
+endsnippet
+
+snippet params-new "Ad bidder params for DB Admin" b
+"$1": {
+	"available_to_ad_rep": true,
+	"default": "",
+	"required": false,
+	"type": "string"
+},
+endsnippet
+
+snippet domain-dsl "Generic DSL query structure" b
+{
+	"match_phrase": {
+		"domain": "$1"
+	}
+},
+endsnippet

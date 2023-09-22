@@ -1,0 +1,101 @@
+snippet html "HTML Boilerplate" b
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>$1</title>
+	</head>
+	<body>
+		$2
+	</body>
+</html>
+endsnippet
+
+snippet pg-script "PubGuru Script" b
+<script type="text/javascript" data-cfasync="false" src="//c.pubguru.net/$1" async ></script> 
+endsnippet
+
+snippet pg-tag "PubGuru Ad Tag" b
+<pubguru data-pg-ad="$1" ><pubguru>
+endsnippet
+
+snippet acq "Consent Queue General Template" b
+<script type="text/javascript">
+window.pg = window.pg || {};
+pg.acq = pg.acq || [];
+pg.acq.push(function() {
+ // Code here will be deferred until after consent management is cleared
+});
+</script>
+endsnippet
+
+snippet atq "Traffic Cop Queue General Template" b
+<script>
+window.pg = window.pg || {};
+pg.atq = pg.atq || [];
+pg.atq.push(function () {
+	// Code here will be deferred until after Traffic Cop
+});
+</script>
+endsnippet
+
+snippet tc-gpt-head "Traffic Cop GPT Head Code" b
+<script>
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+window.pg = window.pg || {};
+pg.atq = pg.atq || [];
+pg.atq.push(function () {
+	googletag.cmd.push(function () {
+		// Define slot calls go here
+		googletag.defineSlot('$1').addService(googletag.pubads());
+		googletag.enableServices();
+	});
+});
+</script>
+endsnippet
+
+snippet tc-gpt-body "Traffic Cop GPT Body Code" b
+<div id='div-gpt-ad-1234-5'>
+<script>
+pg.atq.push(function () {
+	googletag.cmd.push(function () {
+		googletag.display('$1')
+	});
+});
+</script>
+</div>
+endsnippet
+
+snippet lorip "Lorem Ipsum Website Placeholder" b
+<!-- Title and some content -->
+<div class="content" style="min-width:400px; max-width: 800px; float:left;">
+	<h1>This is a Basic Test Page</h1>
+	<p>
+		In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content.
+		Lorem ipsum may be used as a placeholder before final copy is available.
+		It is also used to temporarily replace text in a process called greeking, which allows designers to consider the form of a webpage or publication, without the meaning of the text influencing the design.
+		Lorem ipsum is typically a corrupted version of De finibus bonorum et malorum, a 1st-century BC text by the Roman statesman and philosopher Cicero, with words altered, added, and removed to make it nonsensical and improper Latin.
+	</p>
+	<br>
+	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Lorem_Ipsum_published_example_-_Detroit_Free_Press_-_8_Nov_1970.png/220px-Lorem_Ipsum_published_example_-_Detroit_Free_Press_-_8_Nov_1970.png" alt="lorem in print">
+	<br>
+	<p>
+		Versions of the Lorem ipsum text have been used in typesetting at least since the 1960s, when it was popularized by advertisements for Letraset transfer sheets.
+		Lorem ipsum was introduced to the digital world in the mid-1980s, when Aldus employed it in graphic and word-processing templates for its desktop publishing program PageMaker.
+		Other popular word processors, including Pages and Microsoft Word, have since adopted Lorem ipsum, as have many LaTeX packages, web content managers such as Joomla! and WordPress, and CSS libraries such as Semantic UI.
+	</p>
+	<!-- Footer -->
+	<h3>All content taken from the Lorem Ipsum Wikipedia page.</h3>
+</div>
+<div class="sidebar" style="width:325px; margin-top:5%; float:right;background-color:lightgrey;">
+	<!-- SideBar Content -->
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+		Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+		Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	</p>
+	<br>
+</div>
+endsnippet
